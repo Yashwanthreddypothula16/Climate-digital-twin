@@ -30,3 +30,4 @@ If you are developing a production application, we recommend enabling type-aware
 ```
 
 See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+An AI-powered Digital Twin for Telangana that combines live and historical climate data with machine learning predictions and PennyLane-based quantum simulations. It enables district-wise monitoring and what-if scenarios for changes in temperature, rainfall and climate parameters, presenting simulated impacts through 3D maps, analytics and reports.
