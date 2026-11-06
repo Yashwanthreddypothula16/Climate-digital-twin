@@ -1,0 +1,11 @@
+================================================================================
+VQC VARIATIONAL ANSATZ
+Architecture: 2 Layers of parameterized RY/RZ rotations with cyclic ring CNOTs
+Entanglement Topology: Ring (0->1, 1->2, 2->3, 3->0)
+Trainable Parameters: 16 weights in backend/models/vqc_weights.npy
+================================================================================
+
+0: ──RY(0.51)──RZ(1.15)─╭●───────╭X──RY(0.76)──RZ(0.88)─╭●───────╭X─┤  <Z>
+1: ──RY(0.91)──RZ(0.76)─╰X─╭●────│───RY(0.12)──RZ(1.17)─╰X─╭●────│──┤  <Z>
+2: ──RY(0.27)──RZ(0.27)────╰X─╭●─│───RY(1.02)──RZ(0.33)────╰X─╭●─│──┤  <Z>
+3: ──RY(0.16)──RZ(1.05)───────╰X─╰●──RY(0.30)──RZ(0.30)───────╰X─╰●─┤  <Z>

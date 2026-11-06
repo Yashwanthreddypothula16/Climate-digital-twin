@@ -1,0 +1,46 @@
+================================================================================
+SYMBOLIC QUANTUM CIRCUIT SPECIFICATIONS & EQUATIONS
+Project: AI-Powered Digital Twin for State Climate Using Quantum Machine Learning
+================================================================================
+
+1. FEATURE ENCODING TRANSFORMATION
+   Let raw climate telemetry be X = [T, RH, W, R] where:
+     T  = 2m Air Temperature (°C)
+     RH = Relative Humidity (%)
+     W  = 10m Wind Speed (km/h)
+     R  = 24h Precipitation Total (mm)
+
+   Using MinMaxScaler with feature range [0, pi]:
+     x_i = pi * (X_i - min(X_i)) / (max(X_i) - min(X_i)),  for i in {0, 1, 2, 3}
+
+2. VQC SYMBOLIC UNITARY EVOLUTION
+   The circuit operator is:
+     U_VQC(theta, x) = U_ansatz(theta) * U_feat(x)
+
+   Feature Map (Pauli-Z Angle Embedding):
+     U_feat(x) = RZ_0(x_0) (x) RZ_1(x_1) (x) RZ_2(x_2) (x) RZ_3(x_3)
+
+   Variational Ansatz (2 Layers with Ring Entanglement):
+     U_ansatz(theta) = W_layer1 * W_layer0
+     W_layer(l) = Entangler * Rotations(l)
+     Rotations(l) = (x)_{i=0}^3 [ RZ_i(phi_{l, i}) * RY_i(theta_{l, i}) ]
+     Entangler = CNOT(3, 0) * CNOT(2, 3) * CNOT(1, 2) * CNOT(0, 1)
+
+   Measurement & Classification:
+     <Z_i> = <0000| U_VQC^dagger * Z_i * U_VQC |0000>, for i in {0, 1, 2, 3}
+     Predicted Risk Class = argmax(<Z_0>, <Z_1>, <Z_2>, <Z_3>) mod 4
+     Output Classes: 0: 'Low', 1: 'Moderate', 2: 'High', 3: 'Severe'
+
+3. QSVM QUANTUM KERNEL FORMULATION
+   Quantum Feature Map Unitary:
+     U(x) = CNOT(2, 3) * CNOT(1, 2) * CNOT(0, 1) * [ (x)_{i=0}^3 RY_i(x_i) ]
+     |phi(x)> = U(x)|0000>
+
+   Kernel Overlap (Fidelity):
+     k(x1, x2) = |<phi(x2) | phi(x1)>|^2 = |<0000| U^dagger(x2) U(x1) |0000>|^2
+   Evaluation:
+     The circuit evaluates U^dagger(x2) U(x1)|0000> and computes computational basis
+     state probabilities. P(|0000>) is the exact fidelity kernel similarity.
+   Classical Support Vector Classifier:
+     f(x) = sign( sum_{k} alpha_k * y_k * k(x_k, x) + b )
+================================================================================

@@ -1,0 +1,37 @@
+================================================================================
+VARIATIONAL QUANTUM CLASSIFIER (VQC) — ACTUAL PENNYLANE CIRCUIT
+Source: backend/ml_service.py (_vqc_circuit)
+Parameters: backend/models/vqc_weights.npy (shape: (2, 4, 2))
+Qubit-to-Feature Mapping:
+  Wire 0: q0 (Temperature) = 1.6215 rad
+  Wire 1: q1 (Rel Humidity) = 1.6611 rad
+  Wire 2: q2 (Wind Speed) = 0.7566 rad
+  Wire 3: q3 (Rainfall 24h) = 0.0399 rad
+================================================================================
+
+--- High-Level Circuit Drawing ---
+0: ─╭AngleEmbedding(M0)──RY(0.51)──RZ(1.15)─╭●───────╭X──RY(0.76)──RZ(0.88)─╭●───────╭X─┤  <Z>
+1: ─├AngleEmbedding(M0)──RY(0.91)──RZ(0.76)─╰X─╭●────│───RY(0.12)──RZ(1.17)─╰X─╭●────│──┤  <Z>
+2: ─├AngleEmbedding(M0)──RY(0.27)──RZ(0.27)────╰X─╭●─│───RY(1.02)──RZ(0.33)────╰X─╭●─│──┤  <Z>
+3: ─╰AngleEmbedding(M0)──RY(0.16)──RZ(1.05)───────╰X─╰●──RY(0.30)──RZ(0.30)───────╰X─╰●─┤  <Z>
+
+M0 = 
+[1.62149486 1.66106877 0.75660398 0.03994315]
+
+--- Decomposed Gate-Level Execution (Elementary Gates) ---
+0: ──RZ(1.62)──RY(0.51)──RZ(1.15)─╭●───────╭X──RY(0.76)──RZ(0.88)─╭●───────╭X─┤  <Z>
+1: ──RZ(1.66)──RY(0.91)──RZ(0.76)─╰X─╭●────│───RY(0.12)──RZ(1.17)─╰X─╭●────│──┤  <Z>
+2: ──RZ(0.76)──RY(0.27)──RZ(0.27)────╰X─╭●─│───RY(1.02)──RZ(0.33)────╰X─╭●─│──┤  <Z>
+3: ──RZ(0.04)──RY(0.16)──RZ(1.05)───────╰X─╰●──RY(0.30)──RZ(0.30)───────╰X─╰●─┤  <Z>
+
+--- Trainable Parameter Matrix (Layer x Qubit x [RY, RZ]) ---
+Layer 0:
+  q0: RY(theta=0.5120), RZ(phi=1.1458)
+  q1: RY(theta=0.9052), RZ(phi=0.7585)
+  q2: RY(theta=0.2716), RZ(phi=0.2716)
+  q3: RY(theta=0.1639), RZ(phi=1.0528)
+Layer 1:
+  q0: RY(theta=0.7612), RZ(phi=0.8789)
+  q1: RY(theta=0.1226), RZ(phi=1.1669)
+  q2: RY(theta=1.0157), RZ(phi=0.3336)
+  q3: RY(theta=0.3000), RZ(phi=0.3017)

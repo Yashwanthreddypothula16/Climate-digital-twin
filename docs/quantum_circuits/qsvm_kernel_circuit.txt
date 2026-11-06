@@ -1,0 +1,23 @@
+================================================================================
+QSVM QUANTUM KERNEL CIRCUIT (TRANSITION FIDELITY OVERLAP)
+Source: backend/ml_service.py (_quantum_kernel_circuit)
+Computes: k(x1, x2) = |<0000| U†(x2) U(x1) |0000>|^2 = |<phi(x2)|phi(x1)>|^2
+Measurement: Computational basis state probability P(|0000>) (index 0 of probs)
+================================================================================
+
+--- High-Level Circuit Drawing ---
+0: ─╭AngleEmbedding(M0)─╭●───────╭AngleEmbedding(M1)†─╭X†─────────┤ ╭Probs
+1: ─├AngleEmbedding(M0)─╰X─╭●────├AngleEmbedding(M1)†─╰X†─╭X†─────┤ ├Probs
+2: ─├AngleEmbedding(M0)────╰X─╭●─├AngleEmbedding(M1)†─────╰X†─╭X†─┤ ├Probs
+3: ─╰AngleEmbedding(M0)───────╰X─╰AngleEmbedding(M1)†─────────╰X†─┤ ╰Probs
+
+M0 = 
+[2.24102199 2.37985049 2.09534977 0.83081759]
+M1 = 
+[1.62149486 1.66106877 0.75660398 0.03994315]
+
+--- Decomposed Gate-Level Execution (Elementary Gates) ---
+0: ──RY(2.24)─╭●──RY(1.62)†────────────╭X†────────────────┤ ╭Probs
+1: ──RY(2.38)─╰X─╭●──────────RY(1.66)†─╰X†────────╭X†─────┤ ├Probs
+2: ──RY(2.10)────╰X─────────╭●──────────RY(0.76)†─╰X†─╭X†─┤ ├Probs
+3: ──RY(0.83)───────────────╰X──────────RY(0.04)†─────╰X†─┤ ╰Probs

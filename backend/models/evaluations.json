@@ -1,0 +1,228 @@
+{
+  "Random Forest (Temperature Regressor)": {
+    "taskType": "regression",
+    "targetVariable": "temperature_2m",
+    "architecture": "Ensemble of 100 Decision Trees (max_depth=12)",
+    "dataset": "Telangana 33-District Climatology Time-Series",
+    "testPeriod": "2023 - 2025 (Chronological Out-of-Time Test Set)",
+    "sampleCount": 2376,
+    "metrics": {
+      "mae": 1.03,
+      "rmse": 1.28,
+      "r2Score": 0.948,
+      "unit": "\u00b0C"
+    },
+    "featureImportance": {
+      "Temperature": 0.45,
+      "Month": 0.22,
+      "DayOfYear": 0.12,
+      "Elevation": 0.08,
+      "Humidity": 0.07,
+      "Latitude": 0.04,
+      "Wind": 0.02
+    }
+  },
+  "XGBoost (Rainfall Regressor)": {
+    "taskType": "regression",
+    "targetVariable": "rainfall_24h",
+    "architecture": "Gradient Boosted Trees (120 Estimators, max_depth=6, lr=0.08)",
+    "dataset": "Telangana 33-District Climatology Time-Series",
+    "testPeriod": "2023 - 2025 (Chronological Out-of-Time Test Set)",
+    "sampleCount": 2376,
+    "metrics": {
+      "mae": 4.44,
+      "rmse": 9.33,
+      "r2Score": 0.73,
+      "unit": "mm"
+    },
+    "featureImportance": {
+      "Rainfall_Prev": 0.42,
+      "Humidity": 0.26,
+      "Month": 0.15,
+      "Wind": 0.09,
+      "Latitude": 0.05,
+      "Elevation": 0.03
+    }
+  },
+  "XGBoost (Climate Risk Classifier)": {
+    "taskType": "classification",
+    "targetVariable": "climate_risk_level",
+    "architecture": "Multi-Class XGBoost with Softmax (4 Risk Classes)",
+    "dataset": "Telangana 33-District Climatology Time-Series",
+    "testPeriod": "2023 - 2025 (Chronological Out-of-Time Test Set)",
+    "sampleCount": 2376,
+    "metrics": {
+      "accuracy": 92.5,
+      "f1Score": 0.924,
+      "precision": 0.926,
+      "recall": 0.925,
+      "classes": [
+        "Low",
+        "Moderate",
+        "High",
+        "Severe"
+      ],
+      "confusionMatrix": [
+        [
+          959,
+          36,
+          0,
+          0
+        ],
+        [
+          38,
+          753,
+          14,
+          0
+        ],
+        [
+          4,
+          67,
+          456,
+          3
+        ],
+        [
+          1,
+          2,
+          14,
+          29
+        ]
+      ]
+    }
+  },
+  "Random Forest (Risk Classifier)": {
+    "taskType": "classification",
+    "targetVariable": "climate_risk_level",
+    "architecture": "Random Forest Ensemble (100 Trees)",
+    "dataset": "Telangana 33-District Climatology Time-Series",
+    "testPeriod": "2023 - 2025 (Chronological Out-of-Time Test Set)",
+    "sampleCount": 2376,
+    "metrics": {
+      "accuracy": 92.9,
+      "f1Score": 0.929,
+      "classes": [
+        "Low",
+        "Moderate",
+        "High",
+        "Severe"
+      ],
+      "confusionMatrix": [
+        [
+          955,
+          40,
+          0,
+          0
+        ],
+        [
+          30,
+          765,
+          10,
+          0
+        ],
+        [
+          3,
+          68,
+          458,
+          1
+        ],
+        [
+          1,
+          2,
+          13,
+          30
+        ]
+      ]
+    }
+  },
+  "QSVM (Quantum Support Vector Machine)": {
+    "taskType": "classification",
+    "targetVariable": "climate_risk_level",
+    "architecture": "Quantum Kernel-Enhanced Support Vector Classifier (4-Qubit AngleEmbedding Feature Map)",
+    "dataset": "Telangana 33-District Climatology Time-Series",
+    "testPeriod": "2023 - 2025 (Chronological Out-of-Time Test Set)",
+    "sampleCount": 2376,
+    "quantumDetails": {
+      "qubitCount": 4,
+      "simulator": "PennyLane default.qubit simulator",
+      "ansatz": "AngleEmbedding(Y) + Entanglement CNOT Ladder",
+      "quantumKernel": "Fidelity Kernel |<phi(x)|phi(x')>|^2"
+    },
+    "metrics": {
+      "accuracy": 87.0,
+      "f1Score": 0.864,
+      "classes": [
+        "Low",
+        "Moderate",
+        "High",
+        "Severe"
+      ],
+      "confusionMatrix": [
+        [
+          896,
+          99,
+          0,
+          0
+        ],
+        [
+          40,
+          733,
+          32,
+          0
+        ],
+        [
+          4,
+          92,
+          434,
+          0
+        ],
+        [
+          1,
+          2,
+          40,
+          3
+        ]
+      ]
+    }
+  },
+  "VQC (Variational Quantum Classifier)": {
+    "taskType": "classification",
+    "targetVariable": "climate_risk_level",
+    "architecture": "Variational Quantum Circuit (2 Layers, 4 Qubits, Parameterized RY/RZ + Ring CNOTs)",
+    "dataset": "Telangana 33-District Climatology Time-Series",
+    "testPeriod": "2023 - 2025 (Chronological Out-of-Time Test Set)",
+    "sampleCount": 150,
+    "quantumDetails": {
+      "qubitCount": 4,
+      "circuitLayers": 2,
+      "trainableParameters": 16,
+      "measurement": "Pauli-Z Expectation Values [Z0, Z1, Z2, Z3]"
+    },
+    "metrics": {
+      "accuracy": 19.3,
+      "f1Score": 0.063,
+      "classes": [
+        "Low",
+        "Moderate",
+        "High",
+        "Severe"
+      ],
+      "confusionMatrix": [
+        [
+          0,
+          115,
+          0
+        ],
+        [
+          0,
+          29,
+          0
+        ],
+        [
+          0,
+          6,
+          0
+        ]
+      ]
+    }
+  }
+}

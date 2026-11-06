@@ -1,0 +1,10 @@
+================================================================================
+VQC QUANTUM FEATURE MAP
+Type: qml.AngleEmbedding(features, wires=range(4), rotation='Z')
+Encodes scaled climate features [temp, hum, wind, rain] as Pauli-Z rotations.
+================================================================================
+
+0: ──RZ(1.62)─┤  <Z>
+1: ──RZ(1.66)─┤  <Z>
+2: ──RZ(0.76)─┤  <Z>
+3: ──RZ(0.04)─┤  <Z>
